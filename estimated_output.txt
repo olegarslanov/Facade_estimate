@@ -1,0 +1,7 @@
+ 2023-03-09 18:02:09 One side facade esimated area: 48.0, m2
+ 2023-03-09 18:11:51 One side facade esimated area: 6.5, m2
+ 2023-03-09 18:33:14 One side facade esimated area: 170.483, m2
+ 2023-03-09 18:38:28 One side facade esimated area: 31.0, m2
+ 2023-03-09 18:41:23 One side facade esimated area: 11.626187999999999, m2
+ 2023-03-09 18:47:18 One side facade esimated area: 713288.48, m2
+ 2023-03-09 18:51:58 One side facade esimated area: 1.0 m2
