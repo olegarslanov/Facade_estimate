@@ -4,6 +4,7 @@ current_time = datetime.datetime.now()
 formatted_time = current_time.strftime("%Y-%m-%d %H:%M:%S")
 
 import facade_estimate_area
+import facad_wind
 import logging
 
 # logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
@@ -17,7 +18,7 @@ logging.info(f"{name} has entered company:{company_name}")
 
 
 def get_choice_figure() -> str:
-    print("Please choice figure from list: \n1. Rectangle\n2. Trapezoid\n3. Double_trapezoid")
+    print("Please choice figure from list: \n1. Rectangle\n2. Trapezoid\n3. Double_trapezoid/triangle")
     while True:
         choice_figure= input("Please enter number of figure(1/2/3):")
         if choice_figure in ["1", "2", "3"]:
@@ -26,7 +27,7 @@ def get_choice_figure() -> str:
             print(f"Received invalid figure choice: {choice_figure}")
 
 
-def get_valid_input(user_enter_something) -> float:
+def get_input_plus_float(user_enter_something) -> float:
     while True:
         user_input = input(user_enter_something)
         try:
@@ -46,31 +47,27 @@ L = "Please enter lenght, m: "
 def iniciate_figure_parameter() -> float:    
 
     if choice_figure == "1":
-        lenght = get_valid_input(L)
-        height = get_valid_input("Please enter height, m: ")
-        rectangle_area = facade_estimate_area.Rectangle(lenght, height).calculate_area_rectangle()
-        return rectangle_area
-
+        lenght = get_input_plus_float(L)
+        height = get_input_plus_float("Please enter height, m: ")
+        figure_area = facade_estimate_area.Rectangle(lenght, height).calculate_area_rectangle()
+       
     elif choice_figure == "2":
-        lenght = get_valid_input(L)
-        height_l = get_valid_input("Please enter height from left, m:")
-        height_r = get_valid_input("Please enter height from right, m:")
-        trapezoid_area = facade_estimate_area.Trapezoid(lenght, height_l, height_r).calculate_area_trapezoid()
-        return trapezoid_area
-
+        lenght = get_input_plus_float(L)
+        height_l = get_input_plus_float("Please enter height from left, m:")
+        height_r = get_input_plus_float("Please enter height from right, m:")
+        figure_area = facade_estimate_area.Trapezoid(lenght, height_l, height_r).calculate_area_trapezoid()
+      
     elif choice_figure == "3":
-        lenght = get_valid_input(L)
-        height_l = get_valid_input("Please enter height from left, m:")
-        height_mid = get_valid_input("Please enter height to the ridge of the roof, m:")
-        height_r = get_valid_input("Please enter height from right, m:")
-        double_trapezoid_area = facade_estimate_area.DoubleTrapezoid(lenght, height_l, height_mid, height_r).calculate_area_double_trapezoid()
-        return double_trapezoid_area
-
-    else:
-        print("Invalid choice!")
+        lenght = get_input_plus_float(L)
+        height_l = get_input_plus_float("Please enter height from left, m:")
+        height_mid = get_input_plus_float("Please enter height to the middle on top, m:")
+        height_r = get_input_plus_float("Please enter height from right, m:")
+        figure_area = facade_estimate_area.DoubleTrapezoidTriangle(lenght, height_l, height_mid, height_r).calculate_area_double_trapezoid()
+   
+    return figure_area        
 
 
-def get_valid_quant_input(user_enter_something) -> float:
+def get_valid_figur_quant_input(user_enter_something) -> float:
     while True:
         user_input = input(user_enter_something)
         try:
@@ -84,10 +81,10 @@ def get_valid_quant_input(user_enter_something) -> float:
             print("Error: Input must be greater than 0")
 
 
-figure_quantity = get_valid_quant_input("Please enter how many figures on one side facade:")
+figure_quantity = get_valid_figur_quant_input("Please enter how many figures on one side facade:")
 
-area = 0
 
+area = 0.00
 figure_num = 1
 
 while figure_num <= figure_quantity:
@@ -96,22 +93,24 @@ while figure_num <= figure_quantity:
        
     figure_area = iniciate_figure_parameter()
 
-    area += figure_area 
+    area += figure_area
 
     figure_num += 1
 
 area = round(area, 2)
 
-print("Estimated area saved to estimated_area.txt file")
+print("Estimated facade brutto area saved to estimated_output.txt file")
 
 # generate answer in output.txt file
 with open('estimated_output.txt', 'a') as f:
-    print (f" {formatted_time} One side facade esimated area: {area} m2", file=f)
-
+    print (f" {formatted_time} One side facade esimated brutto area: {area} m2", file=f)
 
 
 
 # cia ateityje reikia surasyti langus
+
+
+
 
 
 # The measurement of the facade must be taken from the drawing. 

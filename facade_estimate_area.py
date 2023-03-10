@@ -1,16 +1,15 @@
 
-# Modulis "facade_estimate_area" 
 
 
 class FigureArea:
     
-    def __init__(self, facade_lenght:float) -> float:
+    def __init__(self, facade_lenght:float) -> None:
         self.facade_lenght = facade_lenght
     
  
 class Rectangle(FigureArea):
 
-    def __init__(self, facade_lenght:float, facade_height_same:float) -> float:
+    def __init__(self, facade_lenght:float, facade_height_same:float) -> None:
         super().__init__(facade_lenght)
         self.facade_height_same = facade_height_same
 
@@ -21,7 +20,7 @@ class Rectangle(FigureArea):
 
 class Trapezoid(FigureArea):
 
-    def __init__(self, facade_lenght:float, facade_height_left:float, facade_height_right:float) -> float:
+    def __init__(self, facade_lenght:float, facade_height_left:float, facade_height_right:float) -> None:
         super().__init__(facade_lenght)
         self.facade_height_left = facade_height_left
         self.facade_height_right = facade_height_right
@@ -32,9 +31,9 @@ class Trapezoid(FigureArea):
         return facade_area_trapezoid
 
 
-class DoubleTrapezoid(FigureArea):
+class DoubleTrapezoidTriangle(FigureArea):
   
-    def __init__(self, facade_lenght:float, facade_height_left:float, facade_height_middle:float, facade_height_right:float) -> float:
+    def __init__(self, facade_lenght:float, facade_height_left:float, facade_height_middle:float, facade_height_right:float) -> None:
         super().__init__(facade_lenght)
         self.facade_height_left = facade_height_left
         self.facade_height_middle = facade_height_middle
@@ -48,6 +47,6 @@ class DoubleTrapezoid(FigureArea):
 
 
 # Each rectangular facade consists of a certain specific figure from which the total area of ​​the facade can be calculated. 
-# These figures (rectangle, trapezoid and double Trapezoid) are described and calculated in this module.
+# These figures (rectangle, trapezoid and double Trapezoid/Triangle) are described and calculated in this module.
 
 
