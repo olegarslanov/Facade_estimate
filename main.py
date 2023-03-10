@@ -7,7 +7,7 @@ import facade_estimate_area
 import logging
 
 # logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
-logging.basicConfig(level=logging.DEBUG, filename='estimate.log',filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
+logging.basicConfig(level=logging.DEBUG, filename='data.log',filemode='a', format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%d/%m/%Y %H:%M:%S')
 
 name = input("Please enter Your name:")
 logging.info(f"{name} has logged in successfully!")
@@ -16,7 +16,7 @@ logging.info(f"{name} has entered company:{company_name}")
 
 
 
-def get_choice_figure():
+def get_choice_figure() -> int:
     print("Please choice figure from list: \n1. Rectangle\n2. Trapezoid\n3. Double_trapezoid")
     while True:
         choice_figure= input("Please enter number of figure(1/2/3):")
