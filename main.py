@@ -16,7 +16,7 @@ logging.info(f"{name} has entered company:{company_name}")
 
 
 
-def get_choice_figure() -> int:
+def get_choice_figure() -> str:
     print("Please choice figure from list: \n1. Rectangle\n2. Trapezoid\n3. Double_trapezoid")
     while True:
         choice_figure= input("Please enter number of figure(1/2/3):")
@@ -26,7 +26,7 @@ def get_choice_figure() -> int:
             print(f"Received invalid figure choice: {choice_figure}")
 
 
-def get_valid_input(user_enter_something):
+def get_valid_input(user_enter_something) -> float:
     while True:
         user_input = input(user_enter_something)
         try:
@@ -40,26 +40,25 @@ def get_valid_input(user_enter_something):
             print("Error: Input must be greater than 0")
 
 
-
 L = "Please enter lenght, m: "
 
 
-def iniciate_figure_parameter():    
+def iniciate_figure_parameter() -> float:    
 
-    if choice_figure == '1':
+    if choice_figure == "1":
         lenght = get_valid_input(L)
         height = get_valid_input("Please enter height, m: ")
         rectangle_area = facade_estimate_area.Rectangle(lenght, height).calculate_area_rectangle()
         return rectangle_area
 
-    elif choice_figure == '2':
+    elif choice_figure == "2":
         lenght = get_valid_input(L)
         height_l = get_valid_input("Please enter height from left, m:")
         height_r = get_valid_input("Please enter height from right, m:")
         trapezoid_area = facade_estimate_area.Trapezoid(lenght, height_l, height_r).calculate_area_trapezoid()
         return trapezoid_area
 
-    elif choice_figure == '3':
+    elif choice_figure == "3":
         lenght = get_valid_input(L)
         height_l = get_valid_input("Please enter height from left, m:")
         height_mid = get_valid_input("Please enter height to the ridge of the roof, m:")
@@ -71,7 +70,7 @@ def iniciate_figure_parameter():
         print("Invalid choice!")
 
 
-def get_valid_quant_input(user_enter_something):
+def get_valid_quant_input(user_enter_something) -> float:
     while True:
         user_input = input(user_enter_something)
         try:
